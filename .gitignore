@@ -1,0 +1,17 @@
+# Ambientes, caches e artefatos locais
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+.cache/
+.model_cache/
+models/
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+*.log
+.DS_Store
+Thumbs.db

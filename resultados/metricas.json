@@ -1,0 +1,18 @@
+{
+  "modelo": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+  "cross_encoder": "cross-encoder/mmarco-mMiniLMv2-L12-H384-v1",
+  "corpus": "documentos expandidos incorporados",
+  "parametros": {
+    "k1": 1.2,
+    "b": 0.75,
+    "alpha": 0.5,
+    "k_rrf": 60
+  },
+  "consultas": 12,
+  "acertos_top1": {
+    "Rank BM25": 10,
+    "Rank Semântico": 10,
+    "Rank RRF": 10
+  },
+  "nota": "Referências didáticas exploratórias, não validação clínica; a consulta por código também é relevante ao Doc 6. Não é benchmark cego."
+}

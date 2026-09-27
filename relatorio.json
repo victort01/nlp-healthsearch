@@ -1,0 +1,95 @@
+{
+  "arquivo": "relatorio_tecnico.pdf",
+  "paginas": [
+    {
+      "titulo": "HealthSearch\nArquitetura híbrida",
+      "blocos": [
+        {
+          "texto": "Tendências em Ciência da Computação · UNIPÊ\nProfessor Me. Ricardo Roberto de Lima · 27/09/2026",
+          "estilo": "NotaDoc"
+        },
+        {
+          "texto": "1. Corpus e fluxo",
+          "estilo": "SecaoDoc"
+        },
+        {
+          "texto": "Seis frases obrigatórias foram preservadas e ampliadas com IA em seis documentos de duas páginas, incorporados ao único arquivo healthsearch_app.py. O material da proposta anterior serve como corpus didático, sem finalidade clínica. As referências numeradas dos textos estão em corpus/REFERENCIAS.md.",
+          "estilo": "TextoDoc"
+        },
+        {
+          "texto": "BM25: documentos completos, tokens em minúsculas, sem acentos e stopwords. Hífens internos preservam identificadores como CÓD-ECG-12D. A biblioteca rank_bm25 calcula o ranking; k1 varia de 0 a 3 (padrão 1,2) e b de 0 a 1 (padrão 0,75). k1=0 usa o limite binário para evitar 0/0.",
+          "estilo": "TextoDoc"
+        },
+        {
+          "texto": "Semântico: paraphrase-multilingual-MiniLM-L12-v2, 384 dimensões, execução real em CPU. Janelas respeitam o limite de tokens, com overlap de 24 tokens. O maior cosseno dos trechos define o score do documento; a passagem correspondente é exibida. Modelos e embeddings são armazenados em cache.",
+          "estilo": "TextoDoc"
+        },
+        {
+          "texto": "2. Fusão e interface",
+          "estilo": "SecaoDoc"
+        },
+        {
+          "texto": "RRF(D) = α/(60 + rank_BM25) + (1 − α)/(60 + rank_semântico). Ranks iniciam em 1; empates usam ID crescente. α varia de 0 a 1 e inicia em 0,5. α=1 conserva a ordem BM25; α=0 conserva a semântica. A fusão combina posições, não os valores brutos incompatíveis.",
+          "estilo": "TextoDoc"
+        },
+        {
+          "texto": "Quatro abas: Léxico, Semântico, Híbrido RRF e Matriz Comparativa. Mostram scores, posições, parcelas da fusão, gráfico, exportação CSV e tempos. O bônus mmarco-mMiniLMv2-L12-H384-v1 reordena apenas os Top-3 híbridos; seus logits não substituem nem representam probabilidades RRF.",
+          "estilo": "TextoDoc"
+        },
+        {
+          "texto": "3. Execução",
+          "estilo": "SecaoDoc"
+        },
+        {
+          "texto": "Instale requirements.txt e execute python -m streamlit run healthsearch_app.py. O primeiro uso baixa pesos públicos; os seguintes reutilizam o cache. python avaliar.py recria os resultados e o gráfico. python verificar_integracao.py exercita os modelos reais e a interface.",
+          "estilo": "TextoDoc"
+        }
+      ]
+    },
+    {
+      "titulo": "Avaliação e limites",
+      "blocos": [
+        {
+          "texto": "Parâmetros: k1=1,2; b=0,75; α=0,5; constante RRF=60. Doze consultas exploratórias, sem seleção posterior de acertos. A referência é didática; a busca pelo código também é relevante ao Doc 6.",
+          "estilo": "NotaDoc"
+        },
+        {
+          "imagem": "resultados/comparacao_ranks.png",
+          "largura": 470
+        },
+        {
+          "texto": "Acertos Top-1: BM25 10/12; semântico 10/12; híbrido 10/12. “Vigilância remota dos batimentos de paciente internado” leva Doc 6 de 3º no BM25 a 1º no híbrido. “P2Y12” leva Doc 2 de 2º no semântico a 1º no híbrido. Há complementaridade, sem superioridade global nesta amostra.",
+          "estilo": "TextoDoc"
+        },
+        {
+          "texto": "Contraexemplos: “o coração parou de bater e a pessoa não reage” coloca Doc 5 em 6º/1º/4º (BM25/semântico/RRF). “Derrame com início recente dos sintomas” coloca Doc 4 em 1º/2º/2º. A fusão pode piorar uma resposta; documentos com BM25 zero também recebem ranks conforme a fórmula exigida.",
+          "estilo": "TextoDoc"
+        },
+        {
+          "texto": "4. Verificação",
+          "estilo": "SecaoDoc"
+        },
+        {
+          "texto": "Doze testes rápidos passaram. A integração com modelos reais confirmou parâmetros extremos, rankings finitos, extremos de α, Top-3 do bônus e controles Streamlit. Na busca pelo código, o bônus manteve Doc 1, Doc 6 e Doc 2, nessa ordem. Scores e evidências estão em resultados/; tempos do primeiro uso incluem aquecimento.",
+          "estilo": "TextoDoc"
+        },
+        {
+          "texto": "5. Responsabilidades",
+          "estilo": "SecaoDoc"
+        },
+        {
+          "texto": "Distribuição proposta para apresentação e manutenção; não representa um histórico comprovado de autoria.",
+          "estilo": "NotaDoc"
+        },
+        {
+          "texto": "Arysson André Oliveira da Luz: corpus, pré-processamento e conferência dos dados. Luiz Henrique Monteiro dos Santos: interface, organização dos resultados e documentação. Paulo Victor Oliveira de Barros Araújo: mecanismos de ranking, integração e verificação dos cálculos.",
+          "estilo": "TextoDoc"
+        },
+        {
+          "texto": "Referências: enunciado Laboratório Prático 05; sbert.net; github.com/dorianbrown/rank_bm25; docs.streamlit.io. O corpus artificial e as consultas exploratórias não constituem validação clínica nem benchmark independente.",
+          "estilo": "NotaDoc"
+        }
+      ]
+    }
+  ]
+}

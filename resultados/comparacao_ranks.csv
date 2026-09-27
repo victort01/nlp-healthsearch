@@ -1,0 +1,13 @@
+consulta,referencia_didatica,Rank BM25,Rank Semântico,Rank RRF
+ataque cardíaco,Doc 1,1,1,1
+CÓD-ECG-12D,Doc 1,1,1,1
+P2Y12,Doc 2,1,2,1
+vigilância remota dos batimentos de paciente internado,Doc 6,3,1,1
+o coração parou de bater e a pessoa não reage,Doc 5,6,1,4
+pressão arterial muito elevada,Doc 3,1,1,1
+derrame com início recente dos sintomas,Doc 4,1,2,2
+antiagregantes plaquetários,Doc 2,1,1,1
+monitoramento de arritmias por telemetria,Doc 6,1,1,1
+compressões torácicas durante reanimação,Doc 5,1,1,1
+trombólise no acidente vascular cerebral,Doc 4,1,1,1
+tratamento venoso de crise hipertensiva,Doc 3,1,1,1
